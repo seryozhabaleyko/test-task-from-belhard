@@ -1,0 +1,153 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 65px;
+
+    > div {
+        width: 100%;
+        border-bottom: 2px solid hsla(220, 4%, 72%, 0.1);
+
+        @media (min-width: 576px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #08101b;
+        }
+
+        @media (min-width: 768px) {
+            display: flex;
+            background: none;
+            width: auto;
+        }
+
+        > a {
+            margin-right: 0;
+
+            @media (min-width: 768px) {
+                margin-right: 15px;
+            }
+        }
+    }
+
+    &-link {
+        display: block;
+        padding: .5rem 1rem;
+        border-bottom: 1px solid transparent;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+
+        color: #6B7076;
+        background: #08101b;
+        margin-right: 20px;
+
+        font-size: 15px;
+        line-height: 25px;
+
+        transition: color .3s;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover,
+        &.active {
+            color: #fff;
+            margin-bottom: -2px;
+        }
+    }
+}
+
+.tab-content {
+    position: relative;
+    background: #08101b;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    padding: 50px 60px;
+
+    @media (min-width: 768px) {
+        padding: 50px 80px;
+    }
+
+    .slide {
+        display: grid;
+        grid-template-areas: "one"
+                          "two"
+                          "three"
+                          "four";
+        gap: 10px;
+
+        @media (min-width: 576px) {
+            grid-template-areas: "one one"
+                          "two two"
+                          "three four";
+        }
+
+        @media (min-width: 768px) {
+            grid-template-areas: "one one two two"
+                          "one one three four";
+        }
+
+        > article {
+            overflow: hidden;
+            position: relative;
+            border-radius: 3px;
+
+            .info {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -100%;
+
+                min-height: 100px;
+                padding: 20px 40px;
+
+                background: rgba(0, 0, 0, 0.65);
+
+                transition: bottom .5s;
+            }
+
+            &:hover {
+                .info {
+                    bottom: 0;
+                }
+            }
+
+            &:nth-child(1) {
+                grid-area: one;
+            }
+
+            &:nth-child(2) {
+                grid-area: two;
+            }
+
+            &:nth-child(3) {
+                grid-area: three;
+            }
+
+            &:nth-child(4) {
+                grid-area: four;
+            }
+        }
+    }
+
+    .prev,
+    .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #8F8F8F;
+
+        transition: .3s;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    .prev {
+        left: 20px;
+    }
+
+    .next {
+        right: 20px;
+    }
+}
