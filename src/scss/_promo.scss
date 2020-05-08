@@ -1,0 +1,59 @@
+.promo {
+    padding: 70px 0;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 40px;
+    align-items: flex-end;
+
+    @media (min-width: 992px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .content {
+        display: grid;
+        grid-row-gap: 40px;
+        .title {
+            font-family: "Open Sans Condensed", sans-serif;
+            font-weight: bold;
+            font-size: 50px;
+            line-height: 133.18%;
+
+            color: #FCF3F3;
+
+            margin: 0;
+
+            > span {
+                border-bottom: 3px solid #E9AA09;
+            }
+        }
+
+        .description {
+            font-size: 20px;
+            line-height: 30px;
+            color: #FFFBFB;
+            margin: 0;
+        }
+
+        > ul {
+            padding-left: 20px;
+            list-style-type: "\1F44D";
+
+            > li {
+                padding-left: 10px;
+                margin-bottom: 5px;
+
+                font-size: 18px;
+                line-height: 25px;
+
+                color: #FFF9F9;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
