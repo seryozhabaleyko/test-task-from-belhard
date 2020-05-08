@@ -1,0 +1,35 @@
+.social {
+    display: grid;
+    justify-content: flex-start;
+
+    @media (min-width: 992px) {
+        justify-content: flex-end;
+    }
+
+    > nav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 20px;
+
+        a {
+            display: block;
+
+            transition: all .3s ease-in;
+
+            svg {
+                color: #DFDADC;
+                opacity: .5;
+                transition: all .3s ease-in;
+
+                &:hover {
+                    color: var(--white, white);
+                    opacity: 1;
+                }
+            }
+
+            &:hover {
+                transform: scale(1.3);
+            }
+        }
+    }
+}
