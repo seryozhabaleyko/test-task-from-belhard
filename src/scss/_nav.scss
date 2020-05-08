@@ -1,0 +1,44 @@
+.nav {
+    display: none;
+
+    @media (min-width: 1200px) {
+        display: flex;
+    }
+
+    &-item {
+        position: relative;
+        margin-right: 60px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &::after {
+            transition: .3s;
+        }
+
+        &:hover {
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -10px;
+                border-bottom: 2px solid hsla(0, 0%, 100%, 0.85);
+            }
+        }
+    }
+
+    &-link {
+        font-size: 18px;
+        line-height: 25px;
+
+        color: hsla(0, 0%, 100%, 0.85);
+
+        transition: .3s;
+
+        &:hover {
+            color: var(--white, white);
+        }
+    }
+}
