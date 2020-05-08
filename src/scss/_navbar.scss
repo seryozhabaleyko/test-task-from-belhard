@@ -1,0 +1,66 @@
+.navbar {
+    height: 125px;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        height: 100%;
+    }
+
+    .call {
+        width: 46px;
+        height: 46px;
+        border: 2px solid var(----white, white);
+        border-radius: 50%;
+
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        transition: .3s;
+
+        &:hover {
+            border: 2px solid var(--green, green);
+
+            svg {
+                width: 15px;
+                height: 15px;
+                color: var(--green, green);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            display: flex;
+        }
+
+        svg {
+            color: #FEFEFE;
+            transition: .3s;
+        }
+    }
+
+    .toggle {
+        border: none;
+        background: inherit;
+        padding: 0;
+
+        width: 32px;
+        height: 32px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (min-width: 1200px) {
+            display: none;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            color: var(----white, white);
+        }
+    }
+}
