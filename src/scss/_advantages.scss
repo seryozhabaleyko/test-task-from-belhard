@@ -1,0 +1,59 @@
+.advantages {
+    position: relative;
+    padding: 70px 0;
+}
+
+.features {
+    display: grid;
+    grid-row-gap: 25px;
+
+    margin-top: 65px;
+
+    @media (min-width: 576px) {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 25px;
+        grid-row-gap: 25px;
+    }
+
+    @media (min-width: 992px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 25px;
+        grid-row-gap: 25px;
+    }
+
+    @media (min-width: 1200px) {
+        grid-row-gap: 50px;
+    }
+}
+
+.feature {
+    display: flex;
+
+    img {
+        width: 70px;
+        height: 70px;
+
+        @media (min-width: 576px) {
+            width: 50px;
+            height: 50px;
+        }
+
+        @media (min-width: 1200px) {
+            width: 70px;
+            height: 70px;
+        }
+    }
+
+    &-body {
+        padding-left: 25px;
+
+        > h3 {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        > p {
+            margin: 0;
+        }
+    }
+}
