@@ -1,9 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -11,15 +11,14 @@ module.exports = {
     mode: 'production',
     entry: './src/js/index.js',
     optimization: {
-        minimizer: [new UglifyJsPlugin({}), new OptimizeCSSAssetsPlugin({})],
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     plugins: [
-        new CleanWebpackPlugin({
-            cleanStaleWebpackAssets: false,
-        }),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',
+            favicon: './src/img/favicon.png',
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,
@@ -43,21 +42,36 @@ module.exports = {
         rules: [
             {
                 test: /\.html$/i,
-                loader: 'html-loader',
-            },
-            {
-                test: /\.css$/i,
-                loader: 'css-loader',
-                options: {
-                    url: true,
-                },
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: true,
+                        },
+                    },
+                ],
             },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
                 ],
             },
             {
@@ -66,13 +80,12 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[path][name].[ext]',
+                            outputPath: 'images',
                         },
                     },
                     {
                         loader: 'image-webpack-loader',
                         options: {
-                            bypassOnDebug: true,
                             disable: true,
                             mozjpeg: {
                                 progressive: true,
