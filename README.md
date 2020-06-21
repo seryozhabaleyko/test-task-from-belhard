@@ -1,4 +1,3 @@
 # Test task by Belhard
-bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
 
-## [Live Preview](https://seryozhabaleyko.github.io/Test-task-by-Belhard/dist/)
+## [Live Preview](https://seryozhabaleyko.github.io/test-task-by-belhard/dist/)
